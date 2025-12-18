@@ -10,8 +10,7 @@ variable "machine" {
     resource_group_name    = string
     location               = string
     size                   = string
-    admin_username         = string
-    admin_password         = string
+  
     disable_password_authentication = bool
     source_image_reference = object({
       publisher = string

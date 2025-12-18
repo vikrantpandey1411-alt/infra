@@ -27,6 +27,7 @@ resource "azurerm_network_interface" "nic" {
     name                          = "internal"
     subnet_id                     = data.azurerm_subnet.datasubnet[each.key].id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = azurerm_public_ip.pip[each.key].id
   }
 }
 
@@ -36,8 +37,8 @@ resource "azurerm_linux_virtual_machine" "machine" {
   resource_group_name = each.value.resource_group_name
   location            = each.value.location
   size                = each.value.size
-  admin_username      = each.value.admin_username
-  admin_password = each.value.admin_password
+  admin_username      = data.azurerm_key_vault_secret.username.value
+  admin_password = data.azurerm_key_vault_secret.password.value
   disable_password_authentication = each.value.disable_password_authentication
   network_interface_ids = [
     azurerm_network_interface.nic[each.key].id,

@@ -10,6 +10,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             backendServiceArm: 'nayaserviceconnection'
             backendAzureRmStorageAccountName: 'pipelinestorageaccount1'
             backendAzureRmContainerName: 'pipeline'
@@ -26,6 +27,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             backendServiceArm: 'nayaserviceconnection'
             backendAzureRmStorageAccountName: 'pipelinestorageaccount1'
             backendAzureRmContainerName: 'pipeline'
@@ -34,6 +36,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             environmentServiceNameAzureRM: 'nayaserviceconnection'
   - stage: manual
     dependsOn: initandplan
@@ -55,6 +58,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             backendServiceArm: 'nayaserviceconnection'
             backendAzureRmStorageAccountName: 'pipelinestorageaccount1'
             backendAzureRmContainerName: 'pipeline'
@@ -64,5 +68,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'apply'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             commandOptions: '-auto-approve'
             environmentServiceNameAzureRM: 'nayaserviceconnection'

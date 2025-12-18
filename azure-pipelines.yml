@@ -60,7 +60,7 @@ stages:
             command: 'init'
             workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             backendServiceArm: 'nayaserviceconnection'
-            backendAzureRmStorageAccountName: 'viksrtg'
+            backendAzureRmStorageAccountName: 'viksrtg1'
             backendAzureRmContainerName: 'infra'
             backendAzureRmKey: 'newproject/dev/terraform.tfstate'
 
